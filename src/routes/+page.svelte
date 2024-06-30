@@ -1,7 +1,18 @@
 <script>
 import { onDestroy } from "svelte";
 
+/*
 
+// TODO: "Rampdown" configuration
+// TODO: "Auto-run" settings
+// TODO: Tab/Favicon notifications
+// TODO: Browser notifications
+// TODO: Add Tones
+// TODO: Add Tone Config
+
+// TODO: Rest activities?
+
+*/
 
 
 
@@ -94,6 +105,12 @@ In Rampdown: {isRampdown}
 In Rest: {isResting}
 <br />
 
+<div class="lights">
+	<div class="light" style="background-color: {workTimer > 0 && !isResting ? 'green' : 'gray'}"></div>
+	<div class="light" style="background-color: {isRampdown ? 'yellow' : 'gray'}"></div>
+	<div class="light" style="background-color: {restTimer > 0 && isResting ? 'red' : 'gray'}"></div>
+</div>
+
 {#if running}
 
 	Running
@@ -101,3 +118,11 @@ In Rest: {isResting}
 {:else}
 
 {/if}
+
+<style>
+.light {
+	border: 1px solid black;
+	height: 30px;
+	width: 30px;
+}
+</style>
